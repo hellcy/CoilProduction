@@ -948,10 +948,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(958, 540);
-            this.Controls.Add(this.JobsPanel);
             this.Controls.Add(this.StartPanel);
             this.Controls.Add(this.MenuPanel);
             this.Controls.Add(this.FinishPanel);
+            this.Controls.Add(this.JobsPanel);
             this.Name = "CoilProduction";
             this.Text = "Coil Production";
             this.MenuPanel.ResumeLayout(false);
