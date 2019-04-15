@@ -106,6 +106,10 @@
             this.PO1800RolledText = new System.Windows.Forms.TextBox();
             this.PO1800RejectedText = new System.Windows.Forms.TextBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.machineText = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.operatorText = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.MenuPanel.SuspendLayout();
             this.StartPanel.SuspendLayout();
             this.JobsPanel.SuspendLayout();
@@ -151,6 +155,10 @@
             // 
             // StartPanel
             // 
+            this.StartPanel.Controls.Add(this.operatorText);
+            this.StartPanel.Controls.Add(this.label10);
+            this.StartPanel.Controls.Add(this.machineText);
+            this.StartPanel.Controls.Add(this.label5);
             this.StartPanel.Controls.Add(this.TypeText);
             this.StartPanel.Controls.Add(this.TypeLabel);
             this.StartPanel.Controls.Add(this.StartErrMsg);
@@ -191,10 +199,11 @@
             this.StartErrMsg.AutoSize = true;
             this.StartErrMsg.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.StartErrMsg.ForeColor = System.Drawing.Color.Red;
-            this.StartErrMsg.Location = new System.Drawing.Point(336, 338);
+            this.StartErrMsg.Location = new System.Drawing.Point(336, 391);
             this.StartErrMsg.Name = "StartErrMsg";
-            this.StartErrMsg.Size = new System.Drawing.Size(0, 29);
+            this.StartErrMsg.Size = new System.Drawing.Size(187, 29);
             this.StartErrMsg.TabIndex = 10;
+            this.StartErrMsg.Text = "Fill information";
             // 
             // StartJobButton
             // 
@@ -943,15 +952,51 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // machineText
+            // 
+            this.machineText.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.machineText.Location = new System.Drawing.Point(456, 293);
+            this.machineText.Name = "machineText";
+            this.machineText.Size = new System.Drawing.Size(174, 35);
+            this.machineText.TabIndex = 14;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(336, 297);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(104, 29);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "Machine";
+            // 
+            // operatorText
+            // 
+            this.operatorText.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.operatorText.Location = new System.Drawing.Point(456, 343);
+            this.operatorText.Name = "operatorText";
+            this.operatorText.Size = new System.Drawing.Size(174, 35);
+            this.operatorText.TabIndex = 16;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(336, 347);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(109, 29);
+            this.label10.TabIndex = 15;
+            this.label10.Text = "Operator";
+            // 
             // CoilProduction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(958, 540);
-            this.Controls.Add(this.JobsPanel);
             this.Controls.Add(this.StartPanel);
             this.Controls.Add(this.MenuPanel);
             this.Controls.Add(this.FinishPanel);
+            this.Controls.Add(this.JobsPanel);
             this.Name = "CoilProduction";
             this.Text = "Coil Production";
             this.MenuPanel.ResumeLayout(false);
@@ -1050,6 +1095,10 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label Total;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox operatorText;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox machineText;
+        private System.Windows.Forms.Label label5;
     }
 }
 
