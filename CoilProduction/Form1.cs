@@ -24,6 +24,7 @@ namespace CoilProduction
                                     ";Extended Properties='Excel 12.0 XML;HDR=YES;';";
 
         int RO1800, RO2100, RO2400, RO2700, RO3000, RE1800, RE2100, RE2400, RE2700, RE3000, RO2370, RO3100, RE2370, RE3100, RO2365, RO2710, RE2365, RE2710;
+        string Machine, Operator;
 
         private BindingSource bindingSource1 = new BindingSource();
 
@@ -133,8 +134,11 @@ namespace CoilProduction
             string dateTime = date + " " + time;
             string type = TypeText.Text.ToString().ToUpper();
 
-            if (CoilIDText.Text != "" && ColorText.Text != "" && TypeText.Text != "")
+            if (CoilIDText.Text != "" && ColorText.Text != "" && TypeText.Text != "" && machineText.Text != "" && operatorText.Text != "")
             {
+                Machine = machineText.Text.ToString();
+                Operator = operatorText.Text.ToString();
+
                 if (type != "PO" && type != "PL" && type != "RA" && type != "SP")
                 {
                     StartErrMsg.Text = "Type '" + TypeText.Text.ToUpper() + "' is not supported.";
@@ -150,8 +154,10 @@ namespace CoilProduction
                     object typeValue = TypeText.Text.ToUpper();
                     object colorValue = ColorText.Text.ToUpper();
                     object timeValue = dateTime;
+                    object machienValue = machineText.Text.ToUpper();
+                    object operatorValue = operatorText.Text.ToUpper();
 
-                    var commandText = $"Insert Into [" + name + "$] ([Coil ID], [Type], [Color], [Start Time], [Flag]) Values (@PropertyOne, @PropertyTwo, @PropertyThree, @PropertyFour, 0)";
+                    var commandText = $"Insert Into [" + name + "$] ([Coil ID], [Type], [Color], [Start Time], [Flag], [Machine], [Operator]) Values (@PropertyOne, @PropertyTwo, @PropertyThree, @PropertyFour, 0, @PropertyFive, @PropertySix)";
 
                     using (var command = new OleDbCommand(commandText, con))
                     {
@@ -159,6 +165,8 @@ namespace CoilProduction
                         command.Parameters.AddWithValue("@PropertyTwo", typeValue ?? DBNull.Value);
                         command.Parameters.AddWithValue("@PropertyThree", colorValue ?? DBNull.Value);
                         command.Parameters.AddWithValue("@PropertyFour", timeValue ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@PropertyFive", machienValue ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@PropertySix", operatorValue ?? DBNull.Value);
                         command.ExecuteNonQuery();
                     }
 
@@ -200,6 +208,9 @@ namespace CoilProduction
                 FtypeText.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
                 FcolorText.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
                 FstartTimeText.Text = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
+                FMachineText.Text = dataGridView1.Rows[e.RowIndex].Cells[7].Value.ToString();
+                FOperatorText.Text = dataGridView1.Rows[e.RowIndex].Cells[8].Value.ToString();
+
                 rowIndex = e.RowIndex;
 
                 switch (FtypeText.Text)
@@ -473,6 +484,8 @@ namespace CoilProduction
             ColorText.Text = "";
             coilScanText.Text = "";
             StartErrMsg.Text = "";
+            machineText.Text = "";
+            operatorText.Text = "";
         }
 
         private void clearPLDetails()

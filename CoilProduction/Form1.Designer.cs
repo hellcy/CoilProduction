@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.MenuPanel = new System.Windows.Forms.Panel();
             this.FinishButton = new System.Windows.Forms.Button();
             this.StartButton = new System.Windows.Forms.Button();
@@ -110,6 +110,10 @@
             this.label5 = new System.Windows.Forms.Label();
             this.operatorText = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
+            this.FOperatorText = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.FMachineText = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             this.MenuPanel.SuspendLayout();
             this.StartPanel.SuspendLayout();
             this.JobsPanel.SuspendLayout();
@@ -201,9 +205,8 @@
             this.StartErrMsg.ForeColor = System.Drawing.Color.Red;
             this.StartErrMsg.Location = new System.Drawing.Point(336, 391);
             this.StartErrMsg.Name = "StartErrMsg";
-            this.StartErrMsg.Size = new System.Drawing.Size(187, 29);
+            this.StartErrMsg.Size = new System.Drawing.Size(0, 29);
             this.StartErrMsg.TabIndex = 10;
-            this.StartErrMsg.Text = "Fill information";
             // 
             // StartJobButton
             // 
@@ -318,23 +321,23 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridView1.ColumnHeadersHeight = 40;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridView1.Location = new System.Drawing.Point(33, 64);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -349,6 +352,10 @@
             // 
             // FinishPanel
             // 
+            this.FinishPanel.Controls.Add(this.FMachineText);
+            this.FinishPanel.Controls.Add(this.label14);
+            this.FinishPanel.Controls.Add(this.FOperatorText);
+            this.FinishPanel.Controls.Add(this.label12);
             this.FinishPanel.Controls.Add(this.TotalRejected);
             this.FinishPanel.Controls.Add(this.label9);
             this.FinishPanel.Controls.Add(this.Total);
@@ -418,7 +425,7 @@
             this.FinishErrMsg.AutoSize = true;
             this.FinishErrMsg.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FinishErrMsg.ForeColor = System.Drawing.Color.Red;
-            this.FinishErrMsg.Location = new System.Drawing.Point(42, 338);
+            this.FinishErrMsg.Location = new System.Drawing.Point(37, 370);
             this.FinishErrMsg.Name = "FinishErrMsg";
             this.FinishErrMsg.Size = new System.Drawing.Size(0, 25);
             this.FinishErrMsg.TabIndex = 34;
@@ -449,7 +456,7 @@
             // 
             this.FstartTimeText.AutoSize = true;
             this.FstartTimeText.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FstartTimeText.Location = new System.Drawing.Point(153, 239);
+            this.FstartTimeText.Location = new System.Drawing.Point(153, 225);
             this.FstartTimeText.Name = "FstartTimeText";
             this.FstartTimeText.Size = new System.Drawing.Size(70, 25);
             this.FstartTimeText.TabIndex = 31;
@@ -489,7 +496,7 @@
             // 
             this.FstartTimeLabel.AutoSize = true;
             this.FstartTimeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FstartTimeLabel.Location = new System.Drawing.Point(37, 239);
+            this.FstartTimeLabel.Location = new System.Drawing.Point(37, 225);
             this.FstartTimeLabel.Name = "FstartTimeLabel";
             this.FstartTimeLabel.Size = new System.Drawing.Size(110, 25);
             this.FstartTimeLabel.TabIndex = 3;
@@ -988,6 +995,46 @@
             this.label10.TabIndex = 15;
             this.label10.Text = "Operator";
             // 
+            // FOperatorText
+            // 
+            this.FOperatorText.AutoSize = true;
+            this.FOperatorText.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FOperatorText.Location = new System.Drawing.Point(153, 324);
+            this.FOperatorText.Name = "FOperatorText";
+            this.FOperatorText.Size = new System.Drawing.Size(70, 25);
+            this.FOperatorText.TabIndex = 40;
+            this.FOperatorText.Text = "label8";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(37, 324);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(96, 25);
+            this.label12.TabIndex = 39;
+            this.label12.Text = "Operator";
+            // 
+            // FMachineText
+            // 
+            this.FMachineText.AutoSize = true;
+            this.FMachineText.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FMachineText.Location = new System.Drawing.Point(153, 275);
+            this.FMachineText.Name = "FMachineText";
+            this.FMachineText.Size = new System.Drawing.Size(70, 25);
+            this.FMachineText.TabIndex = 42;
+            this.FMachineText.Text = "label8";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(37, 275);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(94, 25);
+            this.label14.TabIndex = 41;
+            this.label14.Text = "Machine";
+            // 
             // CoilProduction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1099,6 +1146,10 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox machineText;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label FMachineText;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label FOperatorText;
+        private System.Windows.Forms.Label label12;
     }
 }
 
