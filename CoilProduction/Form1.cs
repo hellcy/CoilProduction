@@ -41,6 +41,7 @@ namespace CoilProduction
             POJobDetailsPanel.Visible = false;
             PLJobDetailsPanel.Visible = false;
             RAJobDetailsPanel.Visible = false;
+            ISJobDetailsPanel.Visible = false;
 
             DataGridViewDisableButtonColumn buttonColumn = new DataGridViewDisableButtonColumn();
             buttonColumn.Text = "Select";
@@ -235,6 +236,11 @@ namespace CoilProduction
                     case "SP":
                         activeJobPanel.Visible = false;
                         activeJobPanel = POJobDetailsPanel;
+                        activeJobPanel.Visible = true;
+                        break;
+                    case "IS":
+                        activeJobPanel.Visible = false;
+                        activeJobPanel = ISJobDetailsPanel;
                         activeJobPanel.Visible = true;
                         break;
                     default:

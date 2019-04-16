@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.MenuPanel = new System.Windows.Forms.Panel();
@@ -114,6 +116,11 @@
             this.PO1800RolledText = new System.Windows.Forms.TextBox();
             this.PO1800RejectedText = new System.Windows.Forms.TextBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.ISJobDetailsPanel = new System.Windows.Forms.Panel();
+            this.ISJobDetailsGrid = new System.Windows.Forms.DataGridView();
+            this.Size = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Rolled = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Rejected = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MenuPanel.SuspendLayout();
             this.StartPanel.SuspendLayout();
             this.JobsPanel.SuspendLayout();
@@ -123,6 +130,8 @@
             this.PLJobDetailsPanel.SuspendLayout();
             this.POJobDetailsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            this.ISJobDetailsPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ISJobDetailsGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // MenuPanel
@@ -357,23 +366,23 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeight = 40;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Location = new System.Drawing.Point(33, 64);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -388,6 +397,7 @@
             // 
             // FinishPanel
             // 
+            this.FinishPanel.Controls.Add(this.ISJobDetailsPanel);
             this.FinishPanel.Controls.Add(this.FMachineText);
             this.FinishPanel.Controls.Add(this.label14);
             this.FinishPanel.Controls.Add(this.FOperatorText);
@@ -1035,15 +1045,68 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // ISJobDetailsPanel
+            // 
+            this.ISJobDetailsPanel.Controls.Add(this.ISJobDetailsGrid);
+            this.ISJobDetailsPanel.Location = new System.Drawing.Point(521, 55);
+            this.ISJobDetailsPanel.Name = "ISJobDetailsPanel";
+            this.ISJobDetailsPanel.Size = new System.Drawing.Size(340, 282);
+            this.ISJobDetailsPanel.TabIndex = 43;
+            // 
+            // ISJobDetailsGrid
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ISJobDetailsGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.ISJobDetailsGrid.ColumnHeadersHeight = 40;
+            this.ISJobDetailsGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Size,
+            this.Rolled,
+            this.Rejected});
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.ISJobDetailsGrid.DefaultCellStyle = dataGridViewCellStyle4;
+            this.ISJobDetailsGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ISJobDetailsGrid.Location = new System.Drawing.Point(0, 0);
+            this.ISJobDetailsGrid.Name = "ISJobDetailsGrid";
+            this.ISJobDetailsGrid.RowTemplate.Height = 40;
+            this.ISJobDetailsGrid.Size = new System.Drawing.Size(340, 282);
+            this.ISJobDetailsGrid.TabIndex = 0;
+            // 
+            // Size
+            // 
+            this.Size.HeaderText = "Size";
+            this.Size.Name = "Size";
+            // 
+            // Rolled
+            // 
+            this.Rolled.HeaderText = "Rolled";
+            this.Rolled.Name = "Rolled";
+            // 
+            // Rejected
+            // 
+            this.Rejected.HeaderText = "Rejected";
+            this.Rejected.Name = "Rejected";
+            // 
             // CoilProduction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(958, 540);
-            this.Controls.Add(this.StartPanel);
-            this.Controls.Add(this.MenuPanel);
             this.Controls.Add(this.FinishPanel);
             this.Controls.Add(this.JobsPanel);
+            this.Controls.Add(this.StartPanel);
+            this.Controls.Add(this.MenuPanel);
             this.Name = "CoilProduction";
             this.Text = "Coil Production";
             this.MenuPanel.ResumeLayout(false);
@@ -1061,6 +1124,8 @@
             this.POJobDetailsPanel.ResumeLayout(false);
             this.POJobDetailsPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            this.ISJobDetailsPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ISJobDetailsGrid)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1150,6 +1215,11 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label FOperatorText;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Panel ISJobDetailsPanel;
+        private System.Windows.Forms.DataGridView ISJobDetailsGrid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Size;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Rolled;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Rejected;
     }
 }
 
