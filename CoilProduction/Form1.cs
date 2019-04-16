@@ -26,6 +26,8 @@ namespace CoilProduction
         int RO1800, RO2100, RO2400, RO2700, RO3000, RE1800, RE2100, RE2400, RE2700, RE3000, RO2370, RO3100, RE2370, RE3100, RO2365, RO2710, RE2365, RE2710;
         string Machine, Operator;
 
+        string gramlinebranch;
+
         private BindingSource bindingSource1 = new BindingSource();
 
         public CoilProduction()
