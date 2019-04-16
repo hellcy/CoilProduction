@@ -86,7 +86,7 @@ namespace CoilProduction
                  */
 
                 // take the partial of the string up to the underscore as the master coil ID and run the checking
-                COILID = coilScanText.Text.Split('_', '+')[0];
+                COILID = coilScanText.Text.Split('_', '+', '.', ',')[0].ToUpper();
 
                 try
                 {
@@ -98,7 +98,7 @@ namespace CoilProduction
                             {
                                 string[] lineArray = line.Split(','); // split the input string by using the delimiter ','
 
-                                CoilIDText.Text = coilScanText.Text.Split('+')[0];
+                                CoilIDText.Text = coilScanText.Text.Split('+', ',', '.')[0].ToUpper();
                                 TypeText.Text = lineArray[1];
                                 ColorText.Text = lineArray[2];
                             }
