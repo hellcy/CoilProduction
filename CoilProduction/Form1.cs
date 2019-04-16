@@ -44,6 +44,16 @@ namespace CoilProduction
             buttonColumn.Text = "Select";
             buttonColumn.UseColumnTextForButtonValue = true;
             dataGridView1.Columns.Add(buttonColumn);
+
+            DataGridViewRow row = new DataGridViewRow();
+            ISJobDetailsGrid.Rows.Add();
+            ISJobDetailsGrid.Rows[0].Cells[0].Value = 1490;
+            ISJobDetailsGrid.Rows.Add();
+            ISJobDetailsGrid.Rows[1].Cells[0].Value = 1790;
+            ISJobDetailsGrid.Rows.Add();
+            ISJobDetailsGrid.Rows[2].Cells[0].Value = 2090;
+            ISJobDetailsGrid.Rows.Add();
+            ISJobDetailsGrid.Rows[3].Cells[0].Value = 2390;
         }
 
         // start button on the menu panel
@@ -139,7 +149,7 @@ namespace CoilProduction
                 Machine = machineText.Text.ToString();
                 Operator = operatorText.Text.ToString();
 
-                if (type != "PO" && type != "PL" && type != "RA" && type != "SP")
+                if (type != "PO" && type != "PL" && type != "RA" && type != "SP" && type != "IS")
                 {
                     StartErrMsg.Text = "Type '" + TypeText.Text.ToUpper() + "' is not supported.";
                     return;
@@ -233,6 +243,11 @@ namespace CoilProduction
                     case "SP":
                         activeJobPanel.Visible = false;
                         activeJobPanel = POJobDetailsPanel;
+                        activeJobPanel.Visible = true;
+                        break;
+                    case "IS":
+                        activeJobPanel.Visible = false;
+                        activeJobPanel = ISJobDetailsPanel;
                         activeJobPanel.Visible = true;
                         break;
                     default:

@@ -29,12 +29,18 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.MenuPanel = new System.Windows.Forms.Panel();
             this.FinishButton = new System.Windows.Forms.Button();
             this.StartButton = new System.Windows.Forms.Button();
             this.StartPanel = new System.Windows.Forms.Panel();
+            this.operatorText = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.machineText = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.TypeText = new System.Windows.Forms.TextBox();
             this.TypeLabel = new System.Windows.Forms.Label();
             this.StartErrMsg = new System.Windows.Forms.Label();
@@ -51,6 +57,10 @@
             this.JobLabel = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.FinishPanel = new System.Windows.Forms.Panel();
+            this.FMachineText = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.FOperatorText = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.TotalRejected = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.Total = new System.Windows.Forms.Label();
@@ -66,6 +76,11 @@
             this.FtypeLabel = new System.Windows.Forms.Label();
             this.FcolorLabel = new System.Windows.Forms.Label();
             this.FcoilIDLabel = new System.Windows.Forms.Label();
+            this.ISJobDetailsPanel = new System.Windows.Forms.Panel();
+            this.ISJobDetailsGrid = new System.Windows.Forms.DataGridView();
+            this.Size = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Rolled = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Rejected = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RAJobDetailsPanel = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -106,19 +121,13 @@
             this.PO1800RolledText = new System.Windows.Forms.TextBox();
             this.PO1800RejectedText = new System.Windows.Forms.TextBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.machineText = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.operatorText = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.FOperatorText = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.FMachineText = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
             this.MenuPanel.SuspendLayout();
             this.StartPanel.SuspendLayout();
             this.JobsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.FinishPanel.SuspendLayout();
+            this.ISJobDetailsPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ISJobDetailsGrid)).BeginInit();
             this.RAJobDetailsPanel.SuspendLayout();
             this.PLJobDetailsPanel.SuspendLayout();
             this.POJobDetailsPanel.SuspendLayout();
@@ -132,7 +141,7 @@
             this.MenuPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MenuPanel.Location = new System.Drawing.Point(0, 0);
             this.MenuPanel.Name = "MenuPanel";
-            this.MenuPanel.Size = new System.Drawing.Size(958, 540);
+            this.MenuPanel.Size = new System.Drawing.Size(893, 540);
             this.MenuPanel.TabIndex = 0;
             // 
             // FinishButton
@@ -177,8 +186,44 @@
             this.StartPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.StartPanel.Location = new System.Drawing.Point(0, 0);
             this.StartPanel.Name = "StartPanel";
-            this.StartPanel.Size = new System.Drawing.Size(958, 540);
+            this.StartPanel.Size = new System.Drawing.Size(893, 540);
             this.StartPanel.TabIndex = 1;
+            // 
+            // operatorText
+            // 
+            this.operatorText.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.operatorText.Location = new System.Drawing.Point(456, 343);
+            this.operatorText.Name = "operatorText";
+            this.operatorText.Size = new System.Drawing.Size(174, 35);
+            this.operatorText.TabIndex = 16;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(336, 347);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(109, 29);
+            this.label10.TabIndex = 15;
+            this.label10.Text = "Operator";
+            // 
+            // machineText
+            // 
+            this.machineText.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.machineText.Location = new System.Drawing.Point(456, 293);
+            this.machineText.Name = "machineText";
+            this.machineText.Size = new System.Drawing.Size(174, 35);
+            this.machineText.TabIndex = 14;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(336, 297);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(104, 29);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "Machine";
             // 
             // TypeText
             // 
@@ -293,7 +338,7 @@
             this.JobsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.JobsPanel.Location = new System.Drawing.Point(0, 0);
             this.JobsPanel.Name = "JobsPanel";
-            this.JobsPanel.Size = new System.Drawing.Size(958, 540);
+            this.JobsPanel.Size = new System.Drawing.Size(893, 540);
             this.JobsPanel.TabIndex = 2;
             // 
             // BackButton2
@@ -321,23 +366,23 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeight = 40;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Location = new System.Drawing.Point(33, 64);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -371,14 +416,55 @@
             this.FinishPanel.Controls.Add(this.FtypeLabel);
             this.FinishPanel.Controls.Add(this.FcolorLabel);
             this.FinishPanel.Controls.Add(this.FcoilIDLabel);
+            this.FinishPanel.Controls.Add(this.ISJobDetailsPanel);
             this.FinishPanel.Controls.Add(this.RAJobDetailsPanel);
             this.FinishPanel.Controls.Add(this.PLJobDetailsPanel);
             this.FinishPanel.Controls.Add(this.POJobDetailsPanel);
             this.FinishPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.FinishPanel.Location = new System.Drawing.Point(0, 0);
             this.FinishPanel.Name = "FinishPanel";
-            this.FinishPanel.Size = new System.Drawing.Size(958, 540);
+            this.FinishPanel.Size = new System.Drawing.Size(893, 540);
             this.FinishPanel.TabIndex = 3;
+            // 
+            // FMachineText
+            // 
+            this.FMachineText.AutoSize = true;
+            this.FMachineText.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FMachineText.Location = new System.Drawing.Point(153, 275);
+            this.FMachineText.Name = "FMachineText";
+            this.FMachineText.Size = new System.Drawing.Size(70, 25);
+            this.FMachineText.TabIndex = 42;
+            this.FMachineText.Text = "label8";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(37, 275);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(94, 25);
+            this.label14.TabIndex = 41;
+            this.label14.Text = "Machine";
+            // 
+            // FOperatorText
+            // 
+            this.FOperatorText.AutoSize = true;
+            this.FOperatorText.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FOperatorText.Location = new System.Drawing.Point(153, 324);
+            this.FOperatorText.Name = "FOperatorText";
+            this.FOperatorText.Size = new System.Drawing.Size(70, 25);
+            this.FOperatorText.TabIndex = 40;
+            this.FOperatorText.Text = "label8";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(37, 324);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(96, 25);
+            this.label12.TabIndex = 39;
+            this.label12.Text = "Operator";
             // 
             // TotalRejected
             // 
@@ -531,6 +617,60 @@
             this.FcoilIDLabel.Size = new System.Drawing.Size(75, 25);
             this.FcoilIDLabel.TabIndex = 0;
             this.FcoilIDLabel.Text = "Coil ID";
+            // 
+            // ISJobDetailsPanel
+            // 
+            this.ISJobDetailsPanel.Controls.Add(this.ISJobDetailsGrid);
+            this.ISJobDetailsPanel.Location = new System.Drawing.Point(521, 55);
+            this.ISJobDetailsPanel.Name = "ISJobDetailsPanel";
+            this.ISJobDetailsPanel.Size = new System.Drawing.Size(340, 283);
+            this.ISJobDetailsPanel.TabIndex = 44;
+            // 
+            // ISJobDetailsGrid
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ISJobDetailsGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.ISJobDetailsGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ISJobDetailsGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Size,
+            this.Rolled,
+            this.Rejected});
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.ISJobDetailsGrid.DefaultCellStyle = dataGridViewCellStyle4;
+            this.ISJobDetailsGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ISJobDetailsGrid.Location = new System.Drawing.Point(0, 0);
+            this.ISJobDetailsGrid.Name = "ISJobDetailsGrid";
+            this.ISJobDetailsGrid.RowTemplate.Height = 40;
+            this.ISJobDetailsGrid.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ISJobDetailsGrid.Size = new System.Drawing.Size(340, 283);
+            this.ISJobDetailsGrid.TabIndex = 43;
+            // 
+            // Size
+            // 
+            this.Size.HeaderText = "Size";
+            this.Size.Name = "Size";
+            // 
+            // Rolled
+            // 
+            this.Rolled.HeaderText = "Rolled";
+            this.Rolled.Name = "Rolled";
+            // 
+            // Rejected
+            // 
+            this.Rejected.HeaderText = "Rejected";
+            this.Rejected.Name = "Rejected";
             // 
             // RAJobDetailsPanel
             // 
@@ -959,91 +1099,15 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // machineText
-            // 
-            this.machineText.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.machineText.Location = new System.Drawing.Point(456, 293);
-            this.machineText.Name = "machineText";
-            this.machineText.Size = new System.Drawing.Size(174, 35);
-            this.machineText.TabIndex = 14;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(336, 297);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(104, 29);
-            this.label5.TabIndex = 13;
-            this.label5.Text = "Machine";
-            // 
-            // operatorText
-            // 
-            this.operatorText.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.operatorText.Location = new System.Drawing.Point(456, 343);
-            this.operatorText.Name = "operatorText";
-            this.operatorText.Size = new System.Drawing.Size(174, 35);
-            this.operatorText.TabIndex = 16;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(336, 347);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(109, 29);
-            this.label10.TabIndex = 15;
-            this.label10.Text = "Operator";
-            // 
-            // FOperatorText
-            // 
-            this.FOperatorText.AutoSize = true;
-            this.FOperatorText.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FOperatorText.Location = new System.Drawing.Point(153, 324);
-            this.FOperatorText.Name = "FOperatorText";
-            this.FOperatorText.Size = new System.Drawing.Size(70, 25);
-            this.FOperatorText.TabIndex = 40;
-            this.FOperatorText.Text = "label8";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(37, 324);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(96, 25);
-            this.label12.TabIndex = 39;
-            this.label12.Text = "Operator";
-            // 
-            // FMachineText
-            // 
-            this.FMachineText.AutoSize = true;
-            this.FMachineText.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FMachineText.Location = new System.Drawing.Point(153, 275);
-            this.FMachineText.Name = "FMachineText";
-            this.FMachineText.Size = new System.Drawing.Size(70, 25);
-            this.FMachineText.TabIndex = 42;
-            this.FMachineText.Text = "label8";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(37, 275);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(94, 25);
-            this.label14.TabIndex = 41;
-            this.label14.Text = "Machine";
-            // 
             // CoilProduction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(958, 540);
-            this.Controls.Add(this.StartPanel);
-            this.Controls.Add(this.MenuPanel);
+            this.ClientSize = new System.Drawing.Size(893, 540);
             this.Controls.Add(this.FinishPanel);
             this.Controls.Add(this.JobsPanel);
+            this.Controls.Add(this.StartPanel);
+            this.Controls.Add(this.MenuPanel);
             this.Name = "CoilProduction";
             this.Text = "Coil Production";
             this.MenuPanel.ResumeLayout(false);
@@ -1054,6 +1118,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.FinishPanel.ResumeLayout(false);
             this.FinishPanel.PerformLayout();
+            this.ISJobDetailsPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ISJobDetailsGrid)).EndInit();
             this.RAJobDetailsPanel.ResumeLayout(false);
             this.RAJobDetailsPanel.PerformLayout();
             this.PLJobDetailsPanel.ResumeLayout(false);
@@ -1150,6 +1216,11 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label FOperatorText;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.DataGridView ISJobDetailsGrid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Size;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Rolled;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Rejected;
+        private System.Windows.Forms.Panel ISJobDetailsPanel;
     }
 }
 
