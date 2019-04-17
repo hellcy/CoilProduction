@@ -16,7 +16,7 @@ namespace CoilProduction
     public partial class CoilProduction : Form
     {
         Panel activePanel, activeJobPanel;
-        string COILID, line;
+        string COILID, line,lineHeader;
         int rowIndex;
         string name = "Sheet1";
         string constr = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" +
@@ -47,6 +47,21 @@ namespace CoilProduction
             buttonColumn.Text = "Select";
             buttonColumn.UseColumnTextForButtonValue = true;
             dataGridView1.Columns.Add(buttonColumn);
+
+            ISJobDetailsGrid.Rows[0].Height = 40;
+            ISJobDetailsGrid.Rows.Add();
+            ISJobDetailsGrid.Rows[0].Cells[0].Value = 1490;
+            ISJobDetailsGrid.Rows[0].Cells[0].ReadOnly = true;
+            ISJobDetailsGrid.Rows.Add();
+            ISJobDetailsGrid.Rows[1].Cells[0].Value = 1790;
+            ISJobDetailsGrid.Rows[1].Cells[0].ReadOnly = true;
+            ISJobDetailsGrid.Rows.Add();
+            ISJobDetailsGrid.Rows[2].Cells[0].Value = 2090;
+            ISJobDetailsGrid.Rows[2].Cells[0].ReadOnly = true;
+            ISJobDetailsGrid.Rows.Add();
+            ISJobDetailsGrid.Rows[3].Cells[0].Value = 2390;
+            ISJobDetailsGrid.Rows[3].Cells[0].ReadOnly = true;
+
         }
 
         // start button on the menu panel
@@ -142,7 +157,7 @@ namespace CoilProduction
                 Machine = machineText.Text.ToString();
                 Operator = operatorText.Text.ToString();
 
-                if (type != "PO" && type != "PL" && type != "RA" && type != "SP")
+                if (type != "PO" && type != "PL" && type != "RA" && type != "SP" && type != "IS")
                 {
                     StartErrMsg.Text = "Type '" + TypeText.Text.ToUpper() + "' is not supported.";
                     return;
@@ -300,11 +315,11 @@ namespace CoilProduction
             try
             {
 
-                if (isEmptyPLDetails() && isEmptyPODetails() && isEmptyRADetails())
-                {
-                    FinishErrMsg.Text = "Please fill job details first.";
-                    return;
-                }
+                //if (isEmptyPLDetails() && isEmptyPODetails() && isEmptyRADetails())
+                //{
+                //    FinishErrMsg.Text = "Please fill job details first.";
+                //    return;
+                //}
 
                 switch (FtypeText.Text)
                 {
@@ -319,6 +334,9 @@ namespace CoilProduction
                         break;
                     case "SP":
                         path = @"C:\coilProductionFile\Smart Post\SP " + date + ".csv";
+                        break;
+                    case "IS":
+                        path = @"C:\coilProductionFile\GramLine\IS " + date + ".csv";
                         break;
                     default:
                         return;
@@ -358,10 +376,25 @@ namespace CoilProduction
                         line = FcoilIDText.Text + "," + FtypeText.Text + "," + FcolorText.Text + "," + PO1800RolledText.Text + "," + PO1800RejectedText.Text + "," + PO2100RolledText.Text + "," + PO2100RejectedText.Text + "," + PO2400RolledText.Text + "," +
                             PO2400RejectedText.Text + "," + PO2700RolledText.Text + "," + PO2700RejectedText.Text + "," + PO3000RolledText.Text + "," + PO3000RejectedText.Text + "," + Total.Text + "," + TotalRejected.Text + "," + FstartTimeText.Text + "," + dateTime;
                         break;
+                    case "IS":
+                        line = FcoilIDText.Text + "," + FtypeText.Text + "," + FcolorText.Text;
+                        lineHeader = "COILID,TYPE,COLOR,";
+                        for (int i = 0; i < ISJobDetailsGrid.Rows.Count - 1; i++)
+                        {
+                            for (int j = 0; j < ISJobDetailsGrid.ColumnCount; j++)
+                            {
+                                line += "," + ISJobDetailsGrid.Rows[i].Cells[j].Value;
+                            }
+                            lineHeader += "Size,Rolled,Rejected,";
+                        }
+                        line += "," +FstartTimeText.Text + "," + dateTime;
+                        lineHeader += "Start Time,End Time";
+                        txt.WriteLine(lineHeader);
+                        break;
                     default:
                         break;
                 }
-
+                
                 txt.WriteLine(line);
                 txt.Close();
             }
@@ -457,7 +490,36 @@ namespace CoilProduction
             }
         }
 
-        public static DataTable GetDataTableFromExcel(string path, bool hasHeader = true)
+        private void ISJobDetailsGrid_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            int value = 0;
+            if (e.RowIndex >= 0 && e.ColumnIndex == 1 && Int32.TryParse(ISJobDetailsGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString(), out value))
+            {
+                int tempValue = 0;
+                for (int i = 0; i < ISJobDetailsGrid.Rows.Count; i++)
+                {
+                    if (ISJobDetailsGrid.Rows[i].Cells[e.ColumnIndex].Value != null && Int32.TryParse(ISJobDetailsGrid.Rows[i].Cells[e.ColumnIndex].Value.ToString(), out value))
+                    {
+                        tempValue += Int32.Parse(ISJobDetailsGrid.Rows[i].Cells[e.ColumnIndex].Value.ToString());
+                    }
+                }
+                Total.Text = tempValue.ToString();
+            }
+            else if (e.RowIndex >= 0 && e.ColumnIndex == 2 && Int32.TryParse(ISJobDetailsGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString(), out value))
+            {
+                int tempValue = 0;
+                for (int i = 0; i < ISJobDetailsGrid.Rows.Count; i++)
+                {
+                    if (ISJobDetailsGrid.Rows[i].Cells[e.ColumnIndex].Value != null && Int32.TryParse(ISJobDetailsGrid.Rows[i].Cells[e.ColumnIndex].Value.ToString(), out value))
+                    {
+                        tempValue += Int32.Parse(ISJobDetailsGrid.Rows[i].Cells[e.ColumnIndex].Value.ToString());
+                    }
+                }
+                TotalRejected.Text = tempValue.ToString();
+            }
+        }
+
+            public static DataTable GetDataTableFromExcel(string path, bool hasHeader = true)
         {
             using (var pck = new OfficeOpenXml.ExcelPackage())
             {
