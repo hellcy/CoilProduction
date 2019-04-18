@@ -37,6 +37,7 @@
             this.FinishButton = new System.Windows.Forms.Button();
             this.StartButton = new System.Windows.Forms.Button();
             this.StartPanel = new System.Windows.Forms.Panel();
+            this.ISTypeList = new System.Windows.Forms.ComboBox();
             this.operatorText = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.machineText = new System.Windows.Forms.TextBox();
@@ -59,9 +60,6 @@
             this.FinishPanel = new System.Windows.Forms.Panel();
             this.ISJobDetailsPanel = new System.Windows.Forms.Panel();
             this.ISJobDetailsGrid = new System.Windows.Forms.DataGridView();
-            this.Size = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Rolled = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Rejected = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FMachineText = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.FOperatorText = new System.Windows.Forms.Label();
@@ -121,6 +119,10 @@
             this.PO1800RolledText = new System.Windows.Forms.TextBox();
             this.PO1800RejectedText = new System.Windows.Forms.TextBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.IStypeLabel = new System.Windows.Forms.Label();
+            this.Size = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Rolled = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Rejected = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MenuPanel.SuspendLayout();
             this.StartPanel.SuspendLayout();
             this.JobsPanel.SuspendLayout();
@@ -168,6 +170,7 @@
             // 
             // StartPanel
             // 
+            this.StartPanel.Controls.Add(this.ISTypeList);
             this.StartPanel.Controls.Add(this.operatorText);
             this.StartPanel.Controls.Add(this.label10);
             this.StartPanel.Controls.Add(this.machineText);
@@ -188,6 +191,19 @@
             this.StartPanel.Name = "StartPanel";
             this.StartPanel.Size = new System.Drawing.Size(958, 540);
             this.StartPanel.TabIndex = 1;
+            // 
+            // ISTypeList
+            // 
+            this.ISTypeList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ISTypeList.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ISTypeList.FormattingEnabled = true;
+            this.ISTypeList.Items.AddRange(new object[] {
+            "Zigzag",
+            "5 Rib"});
+            this.ISTypeList.Location = new System.Drawing.Point(674, 182);
+            this.ISTypeList.Name = "ISTypeList";
+            this.ISTypeList.Size = new System.Drawing.Size(121, 33);
+            this.ISTypeList.TabIndex = 17;
             // 
             // operatorText
             // 
@@ -232,6 +248,7 @@
             this.TypeText.Name = "TypeText";
             this.TypeText.Size = new System.Drawing.Size(174, 35);
             this.TypeText.TabIndex = 12;
+            this.TypeText.TextChanged += new System.EventHandler(this.TypeText_TextChanged);
             // 
             // TypeLabel
             // 
@@ -397,6 +414,7 @@
             // 
             // FinishPanel
             // 
+            this.FinishPanel.Controls.Add(this.IStypeLabel);
             this.FinishPanel.Controls.Add(this.ISJobDetailsPanel);
             this.FinishPanel.Controls.Add(this.FMachineText);
             this.FinishPanel.Controls.Add(this.label14);
@@ -460,25 +478,12 @@
             this.ISJobDetailsGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ISJobDetailsGrid.Location = new System.Drawing.Point(0, 0);
             this.ISJobDetailsGrid.Name = "ISJobDetailsGrid";
+            this.ISJobDetailsGrid.RowHeadersWidth = 20;
             this.ISJobDetailsGrid.RowTemplate.Height = 40;
+            this.ISJobDetailsGrid.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.ISJobDetailsGrid.Size = new System.Drawing.Size(340, 282);
             this.ISJobDetailsGrid.TabIndex = 0;
             this.ISJobDetailsGrid.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.ISJobDetailsGrid_CellValueChanged);
-            // 
-            // Size
-            // 
-            this.Size.HeaderText = "Size";
-            this.Size.Name = "Size";
-            // 
-            // Rolled
-            // 
-            this.Rolled.HeaderText = "Rolled";
-            this.Rolled.Name = "Rolled";
-            // 
-            // Rejected
-            // 
-            this.Rejected.HeaderText = "Rejected";
-            this.Rejected.Name = "Rejected";
             // 
             // FMachineText
             // 
@@ -1099,15 +1104,44 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // IStypeLabel
+            // 
+            this.IStypeLabel.AutoSize = true;
+            this.IStypeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.IStypeLabel.Location = new System.Drawing.Point(254, 112);
+            this.IStypeLabel.Name = "IStypeLabel";
+            this.IStypeLabel.Size = new System.Drawing.Size(0, 25);
+            this.IStypeLabel.TabIndex = 44;
+            // 
+            // Size
+            // 
+            this.Size.HeaderText = "Size";
+            this.Size.Name = "Size";
+            this.Size.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Rolled
+            // 
+            this.Rolled.HeaderText = "Rolled";
+            this.Rolled.Name = "Rolled";
+            this.Rolled.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Rolled.Width = 110;
+            // 
+            // Rejected
+            // 
+            this.Rejected.HeaderText = "Rejected";
+            this.Rejected.Name = "Rejected";
+            this.Rejected.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Rejected.Width = 110;
+            // 
             // CoilProduction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(958, 540);
-            this.Controls.Add(this.FinishPanel);
             this.Controls.Add(this.JobsPanel);
             this.Controls.Add(this.StartPanel);
             this.Controls.Add(this.MenuPanel);
+            this.Controls.Add(this.FinishPanel);
             this.Name = "CoilProduction";
             this.Text = "Coil Production";
             this.MenuPanel.ResumeLayout(false);
@@ -1218,6 +1252,8 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Panel ISJobDetailsPanel;
         private System.Windows.Forms.DataGridView ISJobDetailsGrid;
+        private System.Windows.Forms.ComboBox ISTypeList;
+        private System.Windows.Forms.Label IStypeLabel;
         private System.Windows.Forms.DataGridViewTextBoxColumn Size;
         private System.Windows.Forms.DataGridViewTextBoxColumn Rolled;
         private System.Windows.Forms.DataGridViewTextBoxColumn Rejected;

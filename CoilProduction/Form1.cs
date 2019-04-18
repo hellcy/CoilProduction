@@ -42,6 +42,7 @@ namespace CoilProduction
             PLJobDetailsPanel.Visible = false;
             RAJobDetailsPanel.Visible = false;
             ISJobDetailsPanel.Visible = false;
+            ISTypeList.Visible = false;
 
             DataGridViewDisableButtonColumn buttonColumn = new DataGridViewDisableButtonColumn();
             buttonColumn.Text = "Select";
@@ -139,6 +140,7 @@ namespace CoilProduction
         private void BackButton_Click(object sender, EventArgs e)
         {
             clearStartPanel();
+            ISTypeList.Visible = false;
             activePanel.Visible = false;
             activePanel = MenuPanel;
             activePanel.Visible = true;
@@ -157,6 +159,12 @@ namespace CoilProduction
                 Machine = machineText.Text.ToString();
                 Operator = operatorText.Text.ToString();
 
+                if (type == "IS" && ISTypeList.Text == "")
+                {
+                    StartErrMsg.Text = "Please select type from the dropdown list.";
+                    return;
+                }
+
                 if (type != "PO" && type != "PL" && type != "RA" && type != "SP" && type != "IS")
                 {
                     StartErrMsg.Text = "Type '" + TypeText.Text.ToUpper() + "' is not supported.";
@@ -174,8 +182,9 @@ namespace CoilProduction
                     object timeValue = dateTime;
                     object machienValue = machineText.Text.ToUpper();
                     object operatorValue = operatorText.Text.ToUpper();
+                    object IStypeValue = ISTypeList.Text;
 
-                    var commandText = $"Insert Into [" + name + "$] ([Coil ID], [Type], [Color], [Start Time], [Flag], [Machine], [Operator]) Values (@PropertyOne, @PropertyTwo, @PropertyThree, @PropertyFour, 0, @PropertyFive, @PropertySix)";
+                    var commandText = $"Insert Into [" + name + "$] ([Coil ID], [Type], [Color], [Start Time], [Flag], [Machine], [Operator], [IS Type]) Values (@PropertyOne, @PropertyTwo, @PropertyThree, @PropertyFour, 0, @PropertyFive, @PropertySix, @PropertySeven)";
 
                     using (var command = new OleDbCommand(commandText, con))
                     {
@@ -185,6 +194,7 @@ namespace CoilProduction
                         command.Parameters.AddWithValue("@PropertyFour", timeValue ?? DBNull.Value);
                         command.Parameters.AddWithValue("@PropertyFive", machienValue ?? DBNull.Value);
                         command.Parameters.AddWithValue("@PropertySix", operatorValue ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@PropertySeven", IStypeValue ?? DBNull.Value);
                         command.ExecuteNonQuery();
                     }
 
@@ -197,6 +207,7 @@ namespace CoilProduction
                 }
 
                 clearStartPanel();
+                ISTypeList.Visible = false;
                 activePanel.Visible = false;
                 activePanel = JobsPanel;
                 activePanel.Visible = true;
@@ -228,6 +239,7 @@ namespace CoilProduction
                 FstartTimeText.Text = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
                 FMachineText.Text = dataGridView1.Rows[e.RowIndex].Cells[7].Value.ToString();
                 FOperatorText.Text = dataGridView1.Rows[e.RowIndex].Cells[8].Value.ToString();
+                IStypeLabel.Text = dataGridView1.Rows[e.RowIndex].Cells[9].Value.ToString();
 
                 rowIndex = e.RowIndex;
 
@@ -336,7 +348,7 @@ namespace CoilProduction
                         path = @"C:\coilProductionFile\Smart Post\SP " + date + ".csv";
                         break;
                     case "IS":
-                        path = @"C:\coilProductionFile\GramLine\IS " + date + ".csv";
+                        path = @"C:\coilProductionFile\IS\IS " + date + ".csv";
                         break;
                     default:
                         return;
@@ -377,25 +389,35 @@ namespace CoilProduction
                             PO2400RejectedText.Text + "," + PO2700RolledText.Text + "," + PO2700RejectedText.Text + "," + PO3000RolledText.Text + "," + PO3000RejectedText.Text + "," + Total.Text + "," + TotalRejected.Text + "," + FstartTimeText.Text + "," + dateTime;
                         break;
                     case "IS":
-                        line = FcoilIDText.Text + "," + FtypeText.Text + "," + FcolorText.Text;
-                        lineHeader = "COILID,TYPE,COLOR,";
-                        for (int i = 0; i < ISJobDetailsGrid.Rows.Count - 1; i++)
+                        if (fInfo.Length == 0)
+                        {
+                            txt.WriteLine("COILID,TYPE,COLOR,Size,Rolled,Rejected,Size,Rolled,Rejected,Size,Rolled,Rejected,Size,Rolled,Rejected,Start Time,End Time");
+                        }
+                        line = FcoilIDText.Text + "," + FtypeText.Text + " (" + IStypeLabel.Text + ")" + "," + FcolorText.Text;
+                        for (int i = 0; i < 4; i++)
                         {
                             for (int j = 0; j < ISJobDetailsGrid.ColumnCount; j++)
                             {
                                 line += "," + ISJobDetailsGrid.Rows[i].Cells[j].Value;
                             }
-                            lineHeader += "Size,Rolled,Rejected,";
                         }
                         line += "," +FstartTimeText.Text + "," + dateTime;
-                        lineHeader += "Start Time,End Time";
-                        txt.WriteLine(lineHeader);
+                        txt.WriteLine(line);
+                        for (int i = 4; i < ISJobDetailsGrid.Rows.Count - 1; i++)
+                        {
+                            line = FcoilIDText.Text + "," + FtypeText.Text + " (" + IStypeLabel.Text + ")" + "," + FcolorText.Text;
+                            for (int j = 0; j < ISJobDetailsGrid.ColumnCount; j++)
+                            {
+                                line += "," + ISJobDetailsGrid.Rows[i].Cells[j].Value;
+                            }
+                            txt.WriteLine(line);
+                        }
                         break;
                     default:
                         break;
                 }
                 
-                txt.WriteLine(line);
+                if (FtypeText.Text != "IS") txt.WriteLine(line);
                 txt.Close();
             }
             catch (Exception ex)
@@ -671,6 +693,13 @@ namespace CoilProduction
         private void PO3000RolledText_TextChanged(object sender, EventArgs e) { calulateTotal(); }
         private void PO1800RejectedText_TextChanged(object sender, EventArgs e) { calulateTotal(); }
         private void PO2100RejectedText_TextChanged(object sender, EventArgs e) { calulateTotal(); }
+
+        private void TypeText_TextChanged(object sender, EventArgs e)
+        {
+            if (TypeText.Text.ToUpper() == "IS") ISTypeList.Visible = true;
+            else ISTypeList.Visible = false;
+        }
+
         private void PO2400RejectedText_TextChanged(object sender, EventArgs e) { calulateTotal(); }
         private void PO2700RejectedText_TextChanged(object sender, EventArgs e) { calulateTotal(); }
         private void PO3000RejectedText_TextChanged(object sender, EventArgs e) { calulateTotal(); }
