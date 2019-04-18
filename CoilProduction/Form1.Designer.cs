@@ -478,7 +478,8 @@
             this.ISJobDetailsGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ISJobDetailsGrid.Location = new System.Drawing.Point(0, 0);
             this.ISJobDetailsGrid.Name = "ISJobDetailsGrid";
-            this.ISJobDetailsGrid.RowHeadersWidth = 20;
+            this.ISJobDetailsGrid.RowHeadersVisible = false;
+            this.ISJobDetailsGrid.RowHeadersWidth = 10;
             this.ISJobDetailsGrid.RowTemplate.Height = 40;
             this.ISJobDetailsGrid.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.ISJobDetailsGrid.Size = new System.Drawing.Size(340, 282);
@@ -1118,6 +1119,7 @@
             this.Size.HeaderText = "Size";
             this.Size.Name = "Size";
             this.Size.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Size.Width = 105;
             // 
             // Rolled
             // 
@@ -1138,10 +1140,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(958, 540);
+            this.Controls.Add(this.FinishPanel);
             this.Controls.Add(this.JobsPanel);
             this.Controls.Add(this.StartPanel);
             this.Controls.Add(this.MenuPanel);
-            this.Controls.Add(this.FinishPanel);
             this.Name = "CoilProduction";
             this.Text = "Coil Production";
             this.MenuPanel.ResumeLayout(false);

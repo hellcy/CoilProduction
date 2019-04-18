@@ -49,19 +49,7 @@ namespace CoilProduction
             buttonColumn.UseColumnTextForButtonValue = true;
             dataGridView1.Columns.Add(buttonColumn);
 
-            ISJobDetailsGrid.Rows[0].Height = 40;
-            ISJobDetailsGrid.Rows.Add();
-            ISJobDetailsGrid.Rows[0].Cells[0].Value = 1490;
-            ISJobDetailsGrid.Rows[0].Cells[0].ReadOnly = true;
-            ISJobDetailsGrid.Rows.Add();
-            ISJobDetailsGrid.Rows[1].Cells[0].Value = 1790;
-            ISJobDetailsGrid.Rows[1].Cells[0].ReadOnly = true;
-            ISJobDetailsGrid.Rows.Add();
-            ISJobDetailsGrid.Rows[2].Cells[0].Value = 2090;
-            ISJobDetailsGrid.Rows[2].Cells[0].ReadOnly = true;
-            ISJobDetailsGrid.Rows.Add();
-            ISJobDetailsGrid.Rows[3].Cells[0].Value = 2390;
-            ISJobDetailsGrid.Rows[3].Cells[0].ReadOnly = true;
+            recreateGrid();
 
         }
 
@@ -305,6 +293,9 @@ namespace CoilProduction
                 case "SP":
                     clearPODetails();
                     break;
+                case "IS":
+                    recreateGrid();
+                    break;
                 default:
                     break;
             }
@@ -460,6 +451,9 @@ namespace CoilProduction
                 case "SP":
                     clearPODetails();
                     break;
+                case "IS":
+                    recreateGrid();
+                    break;
                 default:
                     break;
             }
@@ -515,7 +509,7 @@ namespace CoilProduction
         private void ISJobDetailsGrid_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             int value = 0;
-            if (e.RowIndex >= 0 && e.ColumnIndex == 1 && Int32.TryParse(ISJobDetailsGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString(), out value))
+            if (e.RowIndex >= 0 && e.ColumnIndex == 1) //&& ISJobDetailsGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null && Int32.TryParse(ISJobDetailsGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString(), out value))
             {
                 int tempValue = 0;
                 for (int i = 0; i < ISJobDetailsGrid.Rows.Count; i++)
@@ -527,7 +521,7 @@ namespace CoilProduction
                 }
                 Total.Text = tempValue.ToString();
             }
-            else if (e.RowIndex >= 0 && e.ColumnIndex == 2 && Int32.TryParse(ISJobDetailsGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString(), out value))
+            else if (e.RowIndex >= 0 && e.ColumnIndex == 2) //&& Int32.TryParse(ISJobDetailsGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString(), out value))
             {
                 int tempValue = 0;
                 for (int i = 0; i < ISJobDetailsGrid.Rows.Count; i++)
@@ -541,7 +535,7 @@ namespace CoilProduction
             }
         }
 
-            public static DataTable GetDataTableFromExcel(string path, bool hasHeader = true)
+        public static DataTable GetDataTableFromExcel(string path, bool hasHeader = true)
         {
             using (var pck = new OfficeOpenXml.ExcelPackage())
             {
@@ -567,6 +561,26 @@ namespace CoilProduction
                 }
                 return tbl;
             }
+        }
+
+        private void recreateGrid()
+        {
+            ISJobDetailsGrid.Rows.Clear();
+            ISJobDetailsGrid.Rows[0].Height = 40;
+            ISJobDetailsGrid.Rows.Add();
+            ISJobDetailsGrid.Rows[0].Cells[0].Value = 1490;
+            ISJobDetailsGrid.Rows[0].Cells[0].ReadOnly = true;
+            ISJobDetailsGrid.Rows.Add();
+            ISJobDetailsGrid.Rows[1].Cells[0].Value = 1790;
+            ISJobDetailsGrid.Rows[1].Cells[0].ReadOnly = true;
+            ISJobDetailsGrid.Rows.Add();
+            ISJobDetailsGrid.Rows[2].Cells[0].Value = 2090;
+            ISJobDetailsGrid.Rows[2].Cells[0].ReadOnly = true;
+            ISJobDetailsGrid.Rows.Add();
+            ISJobDetailsGrid.Rows[3].Cells[0].Value = 2390;
+            ISJobDetailsGrid.Rows[3].Cells[0].ReadOnly = true;
+            Total.Text = "";
+            TotalRejected.Text = "";
         }
 
         private void clearStartPanel()
